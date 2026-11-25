@@ -64,6 +64,7 @@ const services = [
   }
 ];
 
+
 const professionals = [
   {
     name: 'Ana Clara',
@@ -85,11 +86,11 @@ const professionals = [
 
 
 /* =========================
-   SERVIÇOS
+   RENDERIZAR SERVIÇOS
 ========================= */
 
 function renderServices() {
-  const serviceGrid = document.querySelector('#serviceGrid');
+  const serviceGrid = document.querySelector('#services-grid');
 
   if (!serviceGrid) return;
 
@@ -117,12 +118,12 @@ function renderServices() {
 
 
 /* =========================
-   PROFISSIONAIS
+   RENDERIZAR PROFISSIONAIS
 ========================= */
 
 function renderProfessionals() {
   const professionalGrid =
-    document.querySelector('#professionalGrid');
+    document.querySelector('#professionals-grid');
 
   if (!professionalGrid) return;
 
@@ -166,16 +167,16 @@ function renderProfessionals() {
 
 
 /* =========================
-   AGENDAMENTO
+   PREENCHER AGENDAMENTO
 ========================= */
 
 function populateAppointment() {
 
   const serviceSelect =
-    document.querySelector('#serviceSelect');
+    document.querySelector('#service');
 
   const professionalSelect =
-    document.querySelector('#professionalSelect');
+    document.querySelector('#professional');
 
 
   /* Serviços */
@@ -219,7 +220,7 @@ function populateAppointment() {
 
 
 /* =========================
-   DATA DO AGENDAMENTO
+   VALIDAR DATA
 ========================= */
 
 function setupDateValidation() {
@@ -254,7 +255,7 @@ function setupDateValidation() {
 function setupBooking() {
 
   const form =
-    document.querySelector('#bookingForm');
+    document.querySelector('#booking-form');
 
   if (!form) return;
 
@@ -262,15 +263,20 @@ function setupBooking() {
 
     event.preventDefault();
 
-
     const name =
       document.querySelector('#name')?.value.trim();
 
+    const whatsapp =
+      document.querySelector('#whatsapp')?.value.trim();
+
+    const email =
+      document.querySelector('#email')?.value.trim();
+
     const serviceId =
-      document.querySelector('#serviceSelect')?.value;
+      document.querySelector('#service')?.value;
 
     const professional =
-      document.querySelector('#professionalSelect')?.value;
+      document.querySelector('#professional')?.value;
 
     const date =
       document.querySelector('#date')?.value;
@@ -283,6 +289,7 @@ function setupBooking() {
 
     if (
       !name ||
+      !whatsapp ||
       !serviceId ||
       !professional ||
       !date ||
@@ -290,14 +297,14 @@ function setupBooking() {
     ) {
 
       alert(
-        'Preencha todos os campos para realizar o agendamento.'
+        'Preencha todos os campos obrigatórios para realizar o agendamento.'
       );
 
       return;
     }
 
 
-    /* Procura o serviço */
+    /* Encontrar serviço */
 
     const selectedService =
       services.find(service =>
@@ -305,19 +312,99 @@ function setupBooking() {
       );
 
 
-    /* Confirmação */
+    /* Encontrar profissional */
 
-    alert(
-      `Agendamento solicitado com sucesso!\n\n` +
-      `Nome: ${name}\n` +
-      `Serviço: ${selectedService?.name || serviceId}\n` +
-      `Profissional: ${professional}\n` +
-      `Data: ${date}\n` +
-      `Horário: ${time}`
-    );
+    const selectedProfessional =
+      professionals.find(person =>
+        person.name === professional
+      );
 
 
-    /* Limpa o formulário */
+    /* Data formatada */
+
+    const formattedDate =
+      date.split('-').reverse().join('/');
+
+
+    /* Mostrar confirmação */
+
+    const confirmation =
+      document.querySelector('#confirmation');
+
+    if (confirmation) {
+
+      confirmation.hidden = false;
+
+      confirmation.innerHTML = `
+        <div class="confirmation-content">
+
+          <h3>🎉 Agendamento solicitado!</h3>
+
+          <p>
+            Obrigado, <strong>${name}</strong>!
+          </p>
+
+          <p>
+            Seu horário foi solicitado com os seguintes dados:
+          </p>
+
+          <div class="confirmation-details">
+
+            <p>
+              <strong>Serviço:</strong>
+              ${selectedService?.name || serviceId}
+            </p>
+
+            <p>
+              <strong>Profissional:</strong>
+              ${selectedProfessional?.name || professional}
+            </p>
+
+            <p>
+              <strong>Data:</strong>
+              ${formattedDate}
+            </p>
+
+            <p>
+              <strong>Horário:</strong>
+              ${time}
+            </p>
+
+            <p>
+              <strong>WhatsApp:</strong>
+              ${whatsapp}
+            </p>
+
+            ${
+              email
+                ? `<p><strong>E-mail:</strong> ${email}</p>`
+                : ''
+            }
+
+          </div>
+
+        </div>
+      `;
+
+      confirmation.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+    } else {
+
+      alert(
+        `Agendamento solicitado com sucesso!\n\n` +
+        `Nome: ${name}\n` +
+        `Serviço: ${selectedService?.name || serviceId}\n` +
+        `Profissional: ${professional}\n` +
+        `Data: ${formattedDate}\n` +
+        `Horário: ${time}`
+      );
+
+    }
+
+    /* Limpar formulário */
 
     form.reset();
 
@@ -332,39 +419,43 @@ function setupBooking() {
 function setupMobileMenu() {
 
   const menuButton =
-    document.querySelector('#menuButton');
+    document.querySelector('.menu-btn');
 
   const nav =
-    document.querySelector('#mainNav');
+    document.querySelector('.nav');
 
   if (!menuButton || !nav) return;
 
 
-  menuButton.addEventListener(
-    'click',
-    function() {
+  menuButton.addEventListener('click', function() {
 
+    const isOpen =
       nav.classList.toggle('open');
 
-    }
-  );
+    menuButton.setAttribute(
+      'aria-expanded',
+      isOpen ? 'true' : 'false'
+    );
+
+  });
 
 
-  /* Fecha o menu ao clicar em uma opção */
+  /* Fecha o menu ao clicar em um link */
 
-  nav.querySelectorAll('a')
-    .forEach(link => {
+  nav.querySelectorAll('a').forEach(link => {
 
-      link.addEventListener(
-        'click',
-        function() {
+    link.addEventListener('click', function() {
 
-          nav.classList.remove('open');
+      nav.classList.remove('open');
 
-        }
+      menuButton.setAttribute(
+        'aria-expanded',
+        'false'
       );
 
     });
+
+  });
 
 }
 
@@ -374,10 +465,10 @@ function setupMobileMenu() {
 ========================= */
 
 /*
-  O botão do Instagram deve ser colocado
-  no index.html.
+  O Instagram fica no index.html.
 
-  Exemplo:
+  Para colocar como atalho no menu,
+  você pode adicionar:
 
   <a
     href="https://www.instagram.com/pentepula/"
@@ -389,24 +480,21 @@ function setupMobileMenu() {
 
 
 /* =========================
-   INICIALIZAÇÃO DO SITE
+   INICIAR SITE
 ========================= */
 
-document.addEventListener(
-  'DOMContentLoaded',
-  function() {
+document.addEventListener('DOMContentLoaded', function() {
 
-    renderServices();
+  renderServices();
 
-    renderProfessionals();
+  renderProfessionals();
 
-    populateAppointment();
+  populateAppointment();
 
-    setupDateValidation();
+  setupDateValidation();
 
-    setupBooking();
+  setupBooking();
 
-    setupMobileMenu();
+  setupMobileMenu();
 
-  }
-);
+});
