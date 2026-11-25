@@ -1,66 +1,90 @@
 const services = [
   {
-    id: 'corte-cronograma',
-    name: 'Corte Cronograma',
-    price: 'R$ 80',
-    duration: '1h',
+    id: 'corte-infantil',
+    name: 'Corte Infantil',
+    category: 'Cortes',
+    price: 'R$ 50',
+    duration: '40 min',
     icon: '✂️',
     accent: '#fa9481',
-    description: 'Corte com cronograma capilar em 3 etapas: nutrição, reconstrução e nutrição.'
+    description: 'Corte pensado para deixar os pequenos confortáveis e felizes.'
   },
+
+  {
+    id: 'corte-adulto',
+    name: 'Corte Adulto',
+    category: 'Cortes',
+    price: 'R$ 80',
+    duration: '50 min',
+    icon: '💇',
+    accent: '#c394cb',
+    description: 'Corte com lavagem e finalização para mães, pais e responsáveis.'
+  },
+
   {
     id: 'progressiva',
     name: 'Progressiva',
-    price: 'R$ 120',
-    duration: '2h',
+    category: 'Tratamentos',
+    price: 'R$ 180',
+    duration: '2h30',
     icon: '✨',
     accent: '#c394cb',
-    description: 'Alinhamento dos fios para um cabelo mais liso, leve e com brilho.'
+    description: 'Alinhamento dos fios para um cabelo mais liso e com brilho. Valor pode variar conforme o comprimento.'
   },
+
   {
     id: 'botox',
     name: 'Botox Capilar',
-    price: 'R$ 100',
-    duration: '1h30',
+    category: 'Tratamentos',
+    price: 'R$ 150',
+    duration: '2h',
     icon: '💆',
     accent: '#69c7be',
-    description: 'Tratamento para hidratar, alinhar e deixar os fios mais macios.'
+    description: 'Tratamento para hidratar, alinhar e reduzir o volume dos fios.'
   },
+
   {
     id: 'penteados',
     name: 'Penteados',
-    price: 'R$ 65',
-    duration: '45 min',
+    category: 'Beleza',
+    price: 'R$ 80',
+    duration: '1h',
     icon: '🎀',
     accent: '#fcd770',
-    description: 'Penteados para deixar o visual ainda mais bonito em qualquer ocasião.'
+    description: 'Penteados para festas, eventos e momentos especiais.'
   },
+
   {
     id: 'trancas',
     name: 'Tranças',
+    category: 'Beleza',
     price: 'R$ 70',
     duration: '1h',
     icon: '🪮',
     accent: '#fa9481',
     description: 'Tranças criativas e estilosas para diferentes ocasiões.'
   },
+
   {
     id: 'lavagem',
     name: 'Lavagem',
+    category: 'Cuidados',
     price: 'R$ 35',
     duration: '30 min',
     icon: '🫧',
     accent: '#69c7be',
     description: 'Lavagem completa dos cabelos com cuidado e delicadeza.'
   },
+
   {
     id: 'escova',
     name: 'Escova',
-    price: 'R$ 60',
-    duration: '40 min',
+    category: 'Cuidados',
+    price: 'R$ 70',
+    duration: '50 min',
     icon: '💇',
     accent: '#c394cb',
-    description: 'Escova para deixar os cabelos alinhados, leves e bem finalizados.'
+    description: 'Escova para deixar os cabelos alinhados e bem finalizados.'
   }
 ];
 
@@ -72,102 +96,222 @@ const professionals = [
     emoji: '👩🏻‍🎨',
     a: '#fcd770',
     b: '#fa9481',
-    tags: ['Cortes', 'Penteados', 'Tranças']
+    tags: ['Corte Infantil', 'Penteados', 'Tranças']
   },
+
   {
     name: 'Carlos Henrique',
     role: 'Cabeleireiro',
     emoji: '💇🏻‍♂️',
     a: '#69c7be',
     b: '#fcd770',
-    tags: ['Progressiva', 'Botox', 'Escova']
+    tags: ['Corte Adulto', 'Progressiva', 'Botox', 'Escova']
   }
 ];
 
 
 /* =========================
-   RENDERIZAR SERVIÇOS
+   SERVIÇOS
 ========================= */
 
 function renderServices() {
-  const serviceGrid = document.querySelector('#services-grid');
+
+  const serviceGrid =
+    document.querySelector('#services-grid');
 
   if (!serviceGrid) return;
 
-  serviceGrid.innerHTML = services.map(service => `
-    <article class="service-card" style="--accent:${service.accent}">
-      
+
+  serviceGrid.innerHTML = `
+
+    <div class="service-category">
+
+      <div class="category-title">
+        <span>✂️</span>
+        <div>
+          <h3>Cortes</h3>
+          <p>Para crianças e adultos</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        ${services
+          .filter(service => service.category === 'Cortes')
+          .map(createServiceCard)
+          .join('')}
+      </div>
+
+    </div>
+
+
+    <div class="service-category">
+
+      <div class="category-title">
+        <span>✨</span>
+        <div>
+          <h3>Tratamentos</h3>
+          <p>Cuidados especiais para os cabelos</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        ${services
+          .filter(service => service.category === 'Tratamentos')
+          .map(createServiceCard)
+          .join('')}
+      </div>
+
+    </div>
+
+
+    <div class="service-category">
+
+      <div class="category-title">
+        <span>🎀</span>
+        <div>
+          <h3>Beleza</h3>
+          <p>Produções para todos os momentos</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        ${services
+          .filter(service => service.category === 'Beleza')
+          .map(createServiceCard)
+          .join('')}
+      </div>
+
+    </div>
+
+
+    <div class="service-category">
+
+      <div class="category-title">
+        <span>🫧</span>
+        <div>
+          <h3>Cuidados</h3>
+          <p>Finalização e cuidados dos fios</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        ${services
+          .filter(service => service.category === 'Cuidados')
+          .map(createServiceCard)
+          .join('')}
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+/* =========================
+   CARD DE SERVIÇO
+========================= */
+
+function createServiceCard(service) {
+
+  return `
+
+    <article
+      class="service-card"
+      style="--accent:${service.accent}"
+    >
+
       <div class="service-icon">
         ${service.icon}
       </div>
 
-      <h3>${service.name}</h3>
+      <h3>
+        ${service.name}
+      </h3>
 
       <p>
         ${service.description}
       </p>
 
       <div class="service-info">
-        <span>${service.duration}</span>
-        <strong>${service.price}</strong>
+
+        <span>
+          ${service.duration}
+        </span>
+
+        <strong>
+          ${service.price}
+        </strong>
+
       </div>
 
     </article>
-  `).join('');
+
+  `;
 }
 
 
 /* =========================
-   RENDERIZAR PROFISSIONAIS
+   PROFISSIONAIS
 ========================= */
 
 function renderProfessionals() {
+
   const professionalGrid =
     document.querySelector('#professionals-grid');
 
   if (!professionalGrid) return;
 
-  professionalGrid.innerHTML = professionals.map(professional => `
-    <article class="professional-card">
 
-      <div
-        class="professional-avatar"
-        style="
-          background: linear-gradient(
-            135deg,
-            ${professional.a},
-            ${professional.b}
-          );
-        "
-      >
-        ${professional.emoji}
-      </div>
+  professionalGrid.innerHTML =
+    professionals.map(professional => `
 
-      <div class="professional-info">
+      <article class="professional-card">
 
-        <h3>
-          ${professional.name}
-        </h3>
-
-        <p>
-          ${professional.role}
-        </p>
-
-        <div class="professional-tags">
-          ${professional.tags.map(tag => `
-            <span>${tag}</span>
-          `).join('')}
+        <div
+          class="professional-avatar"
+          style="
+            background: linear-gradient(
+              135deg,
+              ${professional.a},
+              ${professional.b}
+            );
+          "
+        >
+          ${professional.emoji}
         </div>
 
-      </div>
 
-    </article>
-  `).join('');
+        <div class="professional-info">
+
+          <h3>
+            ${professional.name}
+          </h3>
+
+          <p>
+            ${professional.role}
+          </p>
+
+
+          <div class="professional-tags">
+
+            ${professional.tags.map(tag => `
+              <span>
+                ${tag}
+              </span>
+            `).join('')}
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `).join('');
 }
 
 
 /* =========================
-   PREENCHER AGENDAMENTO
+   AGENDAMENTO
 ========================= */
 
 function populateAppointment() {
@@ -179,48 +323,53 @@ function populateAppointment() {
     document.querySelector('#professional');
 
 
-  /* Serviços */
+  /* SERVIÇOS */
 
   if (serviceSelect) {
 
     serviceSelect.innerHTML = `
+
       <option value="">
         Escolha um serviço
       </option>
 
       ${services.map(service => `
+
         <option value="${service.id}">
           ${service.name} — ${service.price}
         </option>
-      `).join('')}
-    `;
 
+      `).join('')}
+
+    `;
   }
 
 
-  /* Profissionais */
+  /* PROFISSIONAIS */
 
   if (professionalSelect) {
 
     professionalSelect.innerHTML = `
+
       <option value="">
         Escolha um profissional
       </option>
 
       ${professionals.map(professional => `
+
         <option value="${professional.name}">
           ${professional.name}
         </option>
+
       `).join('')}
+
     `;
-
   }
-
 }
 
 
 /* =========================
-   VALIDAR DATA
+   DATA
 ========================= */
 
 function setupDateValidation() {
@@ -229,6 +378,7 @@ function setupDateValidation() {
     document.querySelector('#date');
 
   if (!dateInput) return;
+
 
   const today = new Date();
 
@@ -242,6 +392,7 @@ function setupDateValidation() {
   const day =
     String(today.getDate())
       .padStart(2, '0');
+
 
   dateInput.min =
     `${year}-${month}-${day}`;
@@ -259,9 +410,11 @@ function setupBooking() {
 
   if (!form) return;
 
+
   form.addEventListener('submit', function(event) {
 
     event.preventDefault();
+
 
     const name =
       document.querySelector('#name')?.value.trim();
@@ -285,8 +438,6 @@ function setupBooking() {
       document.querySelector('#time')?.value;
 
 
-    /* Verificação */
-
     if (
       !name ||
       !whatsapp ||
@@ -304,60 +455,46 @@ function setupBooking() {
     }
 
 
-    /* Encontrar serviço */
-
     const selectedService =
       services.find(service =>
         service.id === serviceId
       );
 
 
-    /* Encontrar profissional */
-
-    const selectedProfessional =
-      professionals.find(person =>
-        person.name === professional
-      );
-
-
-    /* Data formatada */
-
     const formattedDate =
       date.split('-').reverse().join('/');
 
 
-    /* Mostrar confirmação */
-
     const confirmation =
       document.querySelector('#confirmation');
+
 
     if (confirmation) {
 
       confirmation.hidden = false;
 
       confirmation.innerHTML = `
+
         <div class="confirmation-content">
 
-          <h3>🎉 Agendamento solicitado!</h3>
+          <h3>
+            🎉 Agendamento solicitado!
+          </h3>
 
           <p>
             Obrigado, <strong>${name}</strong>!
-          </p>
-
-          <p>
-            Seu horário foi solicitado com os seguintes dados:
           </p>
 
           <div class="confirmation-details">
 
             <p>
               <strong>Serviço:</strong>
-              ${selectedService?.name || serviceId}
+              ${selectedService?.name}
             </p>
 
             <p>
               <strong>Profissional:</strong>
-              ${selectedProfessional?.name || professional}
+              ${professional}
             </p>
 
             <p>
@@ -384,7 +521,9 @@ function setupBooking() {
           </div>
 
         </div>
+
       `;
+
 
       confirmation.scrollIntoView({
         behavior: 'smooth',
@@ -396,7 +535,7 @@ function setupBooking() {
       alert(
         `Agendamento solicitado com sucesso!\n\n` +
         `Nome: ${name}\n` +
-        `Serviço: ${selectedService?.name || serviceId}\n` +
+        `Serviço: ${selectedService?.name}\n` +
         `Profissional: ${professional}\n` +
         `Data: ${formattedDate}\n` +
         `Horário: ${time}`
@@ -404,7 +543,6 @@ function setupBooking() {
 
     }
 
-    /* Limpar formulário */
 
     form.reset();
 
@@ -440,8 +578,6 @@ function setupMobileMenu() {
   });
 
 
-  /* Fecha o menu ao clicar em um link */
-
   nav.querySelectorAll('a').forEach(link => {
 
     link.addEventListener('click', function() {
@@ -456,7 +592,6 @@ function setupMobileMenu() {
     });
 
   });
-
 }
 
 
@@ -465,10 +600,8 @@ function setupMobileMenu() {
 ========================= */
 
 /*
-  O Instagram fica no index.html.
-
-  Para colocar como atalho no menu,
-  você pode adicionar:
+  O Instagram pode ser colocado
+  no menu do index.html:
 
   <a
     href="https://www.instagram.com/pentepula/"
@@ -480,21 +613,24 @@ function setupMobileMenu() {
 
 
 /* =========================
-   INICIAR SITE
+   INICIAR
 ========================= */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
 
-  renderServices();
+    renderServices();
 
-  renderProfessionals();
+    renderProfessionals();
 
-  populateAppointment();
+    populateAppointment();
 
-  setupDateValidation();
+    setupDateValidation();
 
-  setupBooking();
+    setupBooking();
 
-  setupMobileMenu();
+    setupMobileMenu();
 
-});
+  }
+);
