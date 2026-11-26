@@ -98,7 +98,7 @@ const professionals = [
     photo: 'assets/profissionais/ana-clara.jpg',
     a: '#fcd770',
     b: '#fa9481',
-    tags: ['Corte Infantil', 'Penteados', 'Tranças']
+    tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
     name: 'Carlos Henrique',
