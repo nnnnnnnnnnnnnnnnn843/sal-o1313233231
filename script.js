@@ -117,9 +117,9 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Jhonatthan Pietro',
+    name: 'Jhonattan Pietro',
     role: 'Especialista em penteados',
-    photo: 'assets/profissionais/Jhonatthan Pietro.jpeg',
+    photo: 'assets/profissionais/Jhonattan Pietro.jpeg',
     a: '#fa9481',
     b: '#fcd770',
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
