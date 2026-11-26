@@ -1,9 +1,0 @@
-Coloque aqui as fotos dos profissionais usando os nomes definidos no script.js.
-
-Exemplo:
-ana-clara.jpg
-carlos-henrique.jpg
-beatriz-souza.jpg
-...
-
-A foto pode ser JPG/PNG, mas se usar outro nome será necessário alterar o caminho no script.js.
