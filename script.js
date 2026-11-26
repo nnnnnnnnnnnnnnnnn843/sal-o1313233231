@@ -93,7 +93,7 @@ const services = [
 
 const professionals = [
   {
-    name: 'Ana Clara',
+    name: 'Barbara Sophia',
     role: 'Especialista em beleza infantil',
     photo: 'assets/profissionais/ana-clara.jpg',
     a: '#fcd770',
@@ -101,7 +101,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Carlos Henrique',
+    name: 'Samira Eduarda',
     role: 'Cabeleireiro',
     photo: 'assets/profissionais/carlos-henrique.jpg',
     a: '#69c7be',
@@ -109,7 +109,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Beatriz Souza',
+    name: 'Gabrielly Rodrigues',
     role: 'Cabeleireira',
     photo: 'assets/profissionais/beatriz-souza.jpg',
     a: '#69c7be',
@@ -117,7 +117,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Mariana Alves',
+    name: 'Jhonatthan Pietro',
     role: 'Especialista em penteados',
     photo: 'assets/profissionais/mariana-alves.jpg',
     a: '#fa9481',
@@ -125,7 +125,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Gabriel Martins',
+    name: 'Iraneide Lourdes',
     role: 'Cabeleireiro',
     photo: 'assets/profissionais/gabriel-martins.jpg',
     a: '#c394cb',
@@ -133,7 +133,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Juliana Costa',
+    name: 'Jorge Luis',
     role: 'Especialista em cuidados capilares',
     photo: 'assets/profissionais/juliana-costa.jpg',
     a: '#fcd770',
@@ -141,7 +141,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Rafael Oliveira',
+    name: 'Giovanna Antunes',
     role: 'Cabeleireiro',
     photo: 'assets/profissionais/rafael-oliveira.jpg',
     a: '#fa9481',
@@ -149,7 +149,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Larissa Ferreira',
+    name: 'Kauan Fernando',
     role: 'Especialista em beleza infantil',
     photo: 'assets/profissionais/larissa-ferreira.jpg',
     a: '#69c7be',
@@ -157,7 +157,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Pedro Henrique',
+    name: 'Heloisa Raphaela',
     role: 'Cabeleireiro',
     photo: 'assets/profissionais/pedro-henrique.jpg',
     a: '#c394cb',
@@ -165,7 +165,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Camila Rodrigues',
+    name: 'Dhenneffer Rayanna',
     role: 'Especialista em penteados e tranças',
     photo: 'assets/profissionais/camila-rodrigues.jpg',
     a: '#fa9481',
@@ -173,7 +173,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Lucas Mendes',
+    name: 'Isabelle Vitória',
     role: 'Cabeleireiro',
     photo: 'assets/profissionais/lucas-mendes.jpg',
     a: '#fcd770',
@@ -181,7 +181,7 @@ const professionals = [
     tags: ['Corte Infantil', 'Corte Adulto', 'Progressiva', 'Botox', 'Penteados', 'Tranças', 'Lavagem', 'Escova']
   },
   {
-    name: 'Isabela Rocha',
+    name: 'Nicolly Moura',
     role: 'Especialista em beleza',
     photo: 'assets/profissionais/isabela-rocha.jpg',
     a: '#69c7be',
