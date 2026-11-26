@@ -216,3 +216,57 @@ input:focus, select:focus { border-color: var(--teal); box-shadow: 0 0 0 4px rgb
   transform: translateY(-2px);
   opacity: 0.9;
 }
+/* ==========================================
+   CORREÇÃO DOS CARDS DE SERVIÇOS
+========================================== */
+
+/* As categorias ficam uma embaixo da outra */
+#services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+}
+
+/* Cada categoria ocupa toda a largura */
+#services-grid .service-category {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Os serviços de cada categoria ficam lado a lado */
+#services-grid .service-category .card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* Cards ficam maiores e mais confortáveis */
+#services-grid .service-card {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Texto dos cards */
+#services-grid .service-card p {
+  min-height: 0;
+  line-height: 1.6;
+}
+
+/* Tamanho dos títulos */
+#services-grid .service-card h3 {
+  font-size: 29px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  #services-grid .service-category .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+  #services-grid .service-category .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
