@@ -201,3 +201,18 @@ input:focus, select:focus { border-color: var(--teal); box-shadow: 0 0 0 4px rgb
   transform: translateY(-2px);
   opacity: 0.9;
 }
+.instagram-button {
+  display: inline-block;
+  padding: 14px 24px;
+  background: #c394cb;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.instagram-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
